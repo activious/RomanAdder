@@ -34,4 +34,10 @@ public class RomanAdderTest {
       String res = adder.add("I", "V");
       assertEquals("VI", res);
    }
+
+   @Test // TC5
+   public void testVIIIIplusIisX() {
+      String res = adder.add("VIIII", "I");
+      assertEquals("X", res);
+   }
 }
