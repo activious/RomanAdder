@@ -15,8 +15,7 @@ public class RomanAdder {
       if (!mA.matches() || !mB.matches())
          return null;
 
-      if (a.matches("M{5,}"))
-         throw new NumberOutOfRangeException(a);
+      validate(a);
 
       StringBuilder sb = new StringBuilder();
       for (int i = 1; i <= NUMERALS.length; i++) {
@@ -24,11 +23,18 @@ public class RomanAdder {
          sb.append(mB.group(i));
       }
 
-      String res = reduce(sb.toString());
-      if (res.matches("M{5,}"))
+      try {
+         String res = reduce(sb.toString());
+         validate(res);
+         return res;
+      } catch (NumberOutOfRangeException e) {
          throw new ResultOutOfRangeException();
+      }
+   }
 
-      return res;
+   private void validate(String s) {
+      if (s.matches("M{5,}"))
+         throw new NumberOutOfRangeException(s);
    }
 
    private String reduce(String s) {
