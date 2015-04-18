@@ -76,4 +76,10 @@ public class RomanAdderTest {
       String res = adder.add("CCCCLXXXXVIIII", "I");
       assertEquals("D", res);
    }
+
+   @Test // TC12
+   public void testDplusIisCI() {
+      String res = adder.add("D", "I");
+      assertEquals("DI", res);
+   }
 }
