@@ -3,7 +3,7 @@ import java.util.regex.Pattern;
 
 public class RomanAdder {
    public String add(String a, String b) {
-      Pattern p = Pattern.compile("(X*)(V*)(I*)");
+      Pattern p = Pattern.compile("(L*)(X*)(V*)(I*)");
       Matcher mA = p.matcher(a), mB = p.matcher(b);
       if (!mA.matches() || !mB.matches())
          return null;
@@ -11,6 +11,7 @@ public class RomanAdder {
       res += mA.group(1) + mB.group(1);
       res += mA.group(2) + mB.group(2);
       res += mA.group(3) + mB.group(3);
+      res += mA.group(4) + mB.group(4);
       res = res.replaceFirst("I{5}", "V");
       res = res.replaceFirst("V{2}", "X");
       res = res.replaceFirst("X{5}", "L");
