@@ -34,7 +34,7 @@ public class RomanAdder {
    }
 
    private void validate(String s) {
-      if (s.matches("M{5,}"))
+      if (s.matches("M{5}.*"))
          throw new NumberOutOfRangeException(s);
    }
 
