@@ -14,11 +14,13 @@ public class RomanAdder {
       if (!mA.matches() || !mB.matches())
          return null;
 
-      String res = "";
-      for (int i = 1; i <= NUMERALS.length; i++)
-         res += mA.group(i) + mB.group(i);
+      StringBuilder res = new StringBuilder();
+      for (int i = 1; i <= NUMERALS.length; i++) {
+         res.append(mA.group(i));
+         res.append(mB.group(i));
+      }
 
-      return reduce(res);
+      return reduce(res.toString());
    }
 
    private String reduce(String s) {
