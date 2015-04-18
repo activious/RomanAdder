@@ -5,9 +5,9 @@ public class RomanAdder {
    public String add(String a, String b) {
       Pattern p = Pattern.compile("(X*)(V*)(I*)");
       Matcher mA = p.matcher(a), mB = p.matcher(b);
-      String res = "";
       if (!mA.matches() || !mB.matches())
          return null;
+      String res = "";
       res += mA.group(1) + mB.group(1);
       res += mA.group(2) + mB.group(2);
       res += mA.group(3) + mB.group(3);

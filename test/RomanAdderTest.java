@@ -46,4 +46,10 @@ public class RomanAdderTest {
       String res = adder.add("X", "I");
       assertEquals("XI", res);
    }
+
+   @Test // TC7
+   public void testXXXXVIIIIplusIisL() {
+      String res = adder.add("XXXXVIIII", "I");
+      assertEquals("L", res);
+   }
 }
