@@ -82,4 +82,10 @@ public class RomanAdderTest {
       String res = adder.add("D", "I");
       assertEquals("DI", res);
    }
+
+   @Test // TC13
+   public void testDCCCCLXXXXVIIIIplusIisM() {
+      String res = adder.add("DCCCCLXXXXVIIII", "I");
+      assertEquals("M", res);
+   }
 }
