@@ -16,7 +16,7 @@ public class RomanAdder {
          throw new NumberFormatException("Invalid Roman number: '" + a + "'");
 
       if (!mB.matches())
-         return null;
+         throw new NumberFormatException("Invalid Roman number: '" + b + "'");
 
       validate(a);
       validate(b);
