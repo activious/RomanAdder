@@ -15,13 +15,17 @@ public class RomanAdder {
       if (!mA.matches() || !mB.matches())
          return null;
 
-      StringBuilder res = new StringBuilder();
+      StringBuilder sb = new StringBuilder();
       for (int i = 1; i <= NUMERALS.length; i++) {
-         res.append(mA.group(i));
-         res.append(mB.group(i));
+         sb.append(mA.group(i));
+         sb.append(mB.group(i));
       }
 
-      return reduce(res.toString());
+      String res = reduce(sb.toString());
+      if (res.matches("M{5,}"))
+         throw new ResultOutOfRangeException();
+
+      return res;
    }
 
    private String reduce(String s) {
