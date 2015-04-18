@@ -11,21 +11,27 @@ public class RomanAdderTest {
       adder = new RomanAdder();
    }
 
-   @Test
+   @Test // TC1
    public void testIplusIisII() {
       String res = adder.add("I", "I");
       assertEquals("II", res);
    }
 
-   @Test
+   @Test // TC2
    public void testIIIIplusIisV() {
       String res = adder.add("IIII", "I");
       assertEquals("V", res);
    }
 
-   @Test
+   @Test // TC3
    public void testVplusIisVI() {
       String res = adder.add("V", "I");
+      assertEquals("VI", res);
+   }
+
+   @Test // TC4
+   public void testIplusVisVI() {
+      String res = adder.add("I", "V");
       assertEquals("VI", res);
    }
 }
