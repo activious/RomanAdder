@@ -15,6 +15,7 @@ public class RomanAdder {
       res = res.replaceFirst("I{5}", "V");
       res = res.replaceFirst("V{2}", "X");
       res = res.replaceFirst("X{5}", "L");
+      res = res.replaceFirst("L{2}", "C");
       return res;
    }
 }
