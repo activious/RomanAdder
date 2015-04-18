@@ -129,4 +129,10 @@ public class RomanAdderTest {
       thrown.expect(NumberFormatException.class);
       adder.add("IV", "I");
    }
+
+   @Test // TC20
+   public void testIplusBisInvalid() {
+      thrown.expect(NumberFormatException.class);
+      adder.add("I", "IV");
+   }
 }
