@@ -7,7 +7,7 @@ public class RomanAdder {
 
    public RomanAdder() {
       if (p == null)
-         p = Pattern.compile("(" + String.join("*)(", NUMERALS) + "*)");
+         p = Pattern.compile("(?!$)(" + String.join("*)(", NUMERALS) + "*)");
    }
 
    public String add(String a, String b) {
