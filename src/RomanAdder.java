@@ -12,7 +12,10 @@ public class RomanAdder {
 
    public String add(String a, String b) {
       Matcher mA = p.matcher(a), mB = p.matcher(b);
-      if (!mA.matches() || !mB.matches())
+      if (!mA.matches())
+         throw new NumberFormatException("Invalid Roman number: '" + a + "'");
+
+      if (!mB.matches())
          return null;
 
       validate(a);
