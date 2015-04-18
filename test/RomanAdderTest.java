@@ -1,10 +1,15 @@
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
 public class RomanAdderTest {
    RomanAdder adder;
+
+   @Rule
+   public ExpectedException thrown = ExpectedException.none();
 
    @Before
    public void setup() {
@@ -93,5 +98,11 @@ public class RomanAdderTest {
    public void testMplusIisMI() {
       String res = adder.add("M", "I");
       assertEquals("MI", res);
+   }
+
+   @Test // TC15
+   public void testMMMMDCCCCLXXXXVIIIIplusIisOutOfRange() {
+      thrown.expect(ResultOutOfRangeException.class);
+      adder.add("MMMMDCCCCLXXXXVIIII", "I");
    }
 }
