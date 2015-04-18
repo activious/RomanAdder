@@ -141,4 +141,10 @@ public class RomanAdderTest {
       thrown.expect(NumberFormatException.class);
       adder.add("I", "");
    }
+
+   @Test // TC22
+   public void testMCCXVIIplusDCCCCLXIisMMCLXXVIII() {
+      String res = adder.add("MCCXVII", "DCCCCLXI");
+      adder.add("MMCLXXVIII", res);
+   }
 }
