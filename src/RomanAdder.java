@@ -5,8 +5,9 @@ public class RomanAdder {
    private static final String[] NUMERALS = {"M", "D", "C", "L", "X", "V", "I"};
    private static Pattern p;
 
-   static {
-      p = Pattern.compile("(" + String.join("*)(", NUMERALS) + "*)");
+   public RomanAdder() {
+      if (p == null)
+         p = Pattern.compile("(" + String.join("*)(", NUMERALS) + "*)");
    }
 
    public String add(String a, String b) {
