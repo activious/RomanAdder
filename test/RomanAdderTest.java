@@ -111,4 +111,10 @@ public class RomanAdderTest {
       thrown.expect(NumberOutOfRangeException.class);
       adder.add("MMMMM", "I");
    }
+
+   @Test // TC17
+   public void testIplusMMMMMisOutOfRange() {
+      thrown.expect(NumberOutOfRangeException.class);
+      adder.add("I", "MMMMM");
+   }
 }
