@@ -2,7 +2,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RomanAdder {
-   private static final String[] NUMERALS = {"M", "D", "C", "L", "X", "V", "I"};
+   private static final String[] NUMERALS = { "M", "D", "C", "L", "X", "V", "I" };
    private static Pattern p;
 
    public RomanAdder() {
@@ -12,14 +12,8 @@ public class RomanAdder {
 
    public String add(String a, String b) {
       Matcher mA = p.matcher(a), mB = p.matcher(b);
-      if (!mA.matches())
-         throw new NumberFormatException("Invalid Roman number: '" + a + "'");
-
-      if (!mB.matches())
-         throw new NumberFormatException("Invalid Roman number: '" + b + "'");
-
-      validate(a);
-      validate(b);
+      validate(mA, a);
+      validate(mB, b);
 
       StringBuilder sb = new StringBuilder();
       for (int i = 1; i <= NUMERALS.length; i++) {
@@ -34,6 +28,12 @@ public class RomanAdder {
       } catch (NumberOutOfRangeException e) {
          throw new ResultOutOfRangeException();
       }
+   }
+
+   private void validate(Matcher m, String s) {
+      if (!m.matches())
+         throw new NumberFormatException("Invalid Roman number: '" + s + "'");
+      validate(s);
    }
 
    private void validate(String s) {
