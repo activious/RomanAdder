@@ -18,12 +18,9 @@ public class RomanAdder {
       for (int i = 1; i <= NUMERALS.length; i++)
          res += mA.group(i) + mB.group(i);
 
-      res = res.replaceFirst("I{5}", "V");
-      res = res.replaceFirst("V{2}", "X");
-      res = res.replaceFirst("X{5}", "L");
-      res = res.replaceFirst("L{2}", "C");
-      res = res.replaceFirst("C{5}", "D");
-      res = res.replaceFirst("D{2}", "M");
+      for (int i = NUMERALS.length - 1; i > 0; i--)
+         res = res.replaceFirst(NUMERALS[i] + "{" + (i % 2 == 0 ? 5 : 2) + "}", NUMERALS[i - 1]);
+
       return res;
    }
 }
