@@ -123,4 +123,10 @@ public class RomanAdderTest {
       thrown.expect(ResultOutOfRangeException.class);
       adder.add("MMMM", "MI");
    }
+
+   @Test // TC19
+   public void testIVplusIisInvalid() {
+      thrown.expect(NumberFormatException.class);
+      adder.add("IV", "I");
+   }
 }
