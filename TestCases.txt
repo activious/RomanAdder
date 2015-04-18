@@ -1,0 +1,83 @@
+Test cases are based on the following equivalence classes:
+
+  I..IIII
+  V..VIIII
+  X..XXXXVIIII
+  L..LXXXXVIIII
+  C..CCCCLXXXXVIIII
+  D..DCCCCLXXXXVIIII
+  M..MMMMDCCCCLXXXXVIIII
+
+TC4 tests the commutativity of the addition function.
+  TC15-18 tests the range of input and output. Valid range
+is I..MMMMDCCCCLXXXXVIIII.
+  TC19-21 tests the format of the input, invalidating
+subtractive notation, invalid characters, and the empty string.
+
+ TC#   Input                       Expected output
+--------------------------------------------------------
+   1   a = I                       II
+       b = I
+--------------------------------------------------------
+   2   a = IIII                    V
+       b = I
+--------------------------------------------------------
+   3   a = V                       VI
+       b = I
+--------------------------------------------------------
+   4   a = I                       VI
+       b = V
+--------------------------------------------------------
+   5   a = VIIII                   X
+       b = I
+--------------------------------------------------------
+   6   a = X                       XI
+       b = I
+--------------------------------------------------------
+   7   a = XXXXVIIII               L
+       b = I
+--------------------------------------------------------
+   8   a = L                       LI
+       b = I
+--------------------------------------------------------
+   9   a = LXXXXVIIII              C
+       b = I
+--------------------------------------------------------
+  10   a = C                       CI
+       b = I
+--------------------------------------------------------
+  11   a = CCCCLXXXXVIIII          D
+       b = I
+--------------------------------------------------------
+  12   a = D                       DI
+       b = I
+--------------------------------------------------------
+  13   a = DCCCCLXXXXVIIII         M
+       b = I
+--------------------------------------------------------
+  14   a = M                       MI
+       b = I
+--------------------------------------------------------
+  15   a = MMMMDCCCCLXXXXVIIII     Exception:
+       b = I                       Result out of range
+--------------------------------------------------------
+  16   a = MMMMM                   Exception:
+       b = I                       'a' out of range
+--------------------------------------------------------
+  17   a = I                       Exception:
+       b = MMMMM                   'b' out of range
+--------------------------------------------------------
+  18   a = MMMM                    Exception:
+       b = MI                      Result out of range
+--------------------------------------------------------
+  19   a = IV                      Exception:
+       b = I                       'a' invalid
+--------------------------------------------------------
+  20   a = I                       Exception:
+       b = B                       'b' invalid
+--------------------------------------------------------
+  21   a = I                       Exception:
+       b = (empty string)          'b' invalid
+--------------------------------------------------------
+  22   a = MCCXVII                 MMCLXXVIII
+       b = DCCCCLXI
