@@ -135,4 +135,10 @@ public class RomanAdderTest {
       thrown.expect(NumberFormatException.class);
       adder.add("I", "IV");
    }
+
+   @Test // TC21
+   public void testIplusEmptyStringIsInvalid() {
+      thrown.expect(NumberFormatException.class);
+      adder.add("I", "");
+   }
 }
