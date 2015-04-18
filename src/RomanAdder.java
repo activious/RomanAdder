@@ -16,6 +16,7 @@ public class RomanAdder {
          return null;
 
       validate(a);
+      validate(b);
 
       StringBuilder sb = new StringBuilder();
       for (int i = 1; i <= NUMERALS.length; i++) {
