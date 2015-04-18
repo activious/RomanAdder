@@ -11,6 +11,7 @@ public class RomanAdder {
       res += mA.group(1) + mB.group(1);
       res += mA.group(2) + mB.group(2);
       res = res.replaceFirst("I{5}", "V");
+      res = res.replaceFirst("V{2}", "X");
       return res;
    }
 }
