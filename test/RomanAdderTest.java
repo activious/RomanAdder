@@ -22,4 +22,10 @@ public class RomanAdderTest {
       String res = adder.add("IIII", "I");
       assertEquals("V", res);
    }
+
+   @Test
+   public void testVplusIisVI() {
+      String res = adder.add("V", "I");
+      assertEquals("VI", res);
+   }
 }
