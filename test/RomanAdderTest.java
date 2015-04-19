@@ -133,7 +133,7 @@ public class RomanAdderTest {
    @Test // TC20
    public void testIplusBisInvalid() {
       thrown.expect(NumberFormatException.class);
-      adder.add("I", "IV");
+      adder.add("I", "B");
    }
 
    @Test // TC21
