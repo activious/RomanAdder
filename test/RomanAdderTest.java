@@ -145,6 +145,6 @@ public class RomanAdderTest {
    @Test // TC22
    public void testMCCXVIIplusDCCCCLXIisMMCLXXVIII() {
       String res = adder.add("MCCXVII", "DCCCCLXI");
-      adder.add("MMCLXXVIII", res);
+      assertEquals("MMCLXXVIII", res);
    }
 }
