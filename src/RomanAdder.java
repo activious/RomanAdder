@@ -43,7 +43,7 @@ public class RomanAdder {
 
    private String reduce(String s) {
       for (int i = NUMERALS.length - 1; i > 0; i--) {
-         s = s.replaceFirst(
+         s = s.replaceAll(
                  NUMERALS[i] + "{" + (i % 2 == 0 ? 5 : 2) + "}",
                  NUMERALS[i - 1]);
       }
