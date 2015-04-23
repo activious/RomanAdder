@@ -12,8 +12,8 @@ public class RomanAdder {
    public String add(String a, String b) {
       Matcher mA = validator.match(a), mB = validator.match(b);
       // Make sure operands normalize without issues
-      normalizer.normalize(a);
-      normalizer.normalize(b);
+      normalizer.reduce(a);
+      normalizer.reduce(b);
 
       StringBuilder sb = new StringBuilder();
       for (int i = 1; i <= RomanNumeral.values().length; i++) {
@@ -22,7 +22,7 @@ public class RomanAdder {
       }
 
       try {
-         return normalizer.normalize(sb.toString());
+         return normalizer.reduce(sb.toString());
       } catch (NumberOutOfRangeException e) {
          throw new ResultOutOfRangeException();
       }
