@@ -1,10 +1,11 @@
-public class RomanNumberNormalizer {
+public class RomanNumberNormalizer implements Normalizer<String> {
    private Validator<String> validator;
 
    public RomanNumberNormalizer(Validator<String> validator) {
       this.validator = validator;
    }
 
+   @Override
    public String normalize(String s) {
       // Bring to reduced format
       String res = s;
