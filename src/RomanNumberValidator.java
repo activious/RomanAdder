@@ -7,8 +7,11 @@ public class RomanNumberValidator implements Validator<String> {
    public RomanNumberValidator() {
       if (p == null) {
          StringBuilder sb = new StringBuilder("(?!$)");
-         for (RomanNumeral numeral : RomanNumeral.values())
-            sb.append("(" + numeral + "*)");
+         for (RomanNumeral numeral : RomanNumeral.values()) {
+            sb.append("(");
+            sb.append(numeral);
+            sb.append("*)");
+         }
          p = Pattern.compile(sb.toString());
       }
    }
