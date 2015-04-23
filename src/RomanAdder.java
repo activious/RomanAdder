@@ -1,5 +1,4 @@
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RomanAdder {
    private RomanNumberValidator validator;
@@ -12,9 +11,9 @@ public class RomanAdder {
 
    public String add(String a, String b) {
       Matcher mA = validator.match(a), mB = validator.match(b);
-
-      validator.validate(a);
-      validator.validate(b);
+      // Make sure operands normalize without issues
+      normalizer.normalize(a);
+      normalizer.normalize(b);
 
       StringBuilder sb = new StringBuilder();
       for (int i = 1; i <= RomanNumeral.values().length; i++) {
