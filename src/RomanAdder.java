@@ -11,8 +11,8 @@ public class RomanAdder {
    public String add(String a, String b) {
       Matcher mA = validator.match(a), mB = validator.match(b);
 
-      validate(a);
-      validate(b);
+      validator.validate(a);
+      validator.validate(b);
 
       StringBuilder sb = new StringBuilder();
       for (int i = 1; i <= RomanNumeral.values().length; i++) {
@@ -22,16 +22,11 @@ public class RomanAdder {
 
       try {
          String res = reduce(sb.toString());
-         validate(res);
+         validator.validate(res);
          return res;
       } catch (NumberOutOfRangeException e) {
          throw new ResultOutOfRangeException();
       }
-   }
-
-   private void validate(String s) {
-      if (s.matches("M{5}.*"))
-         throw new NumberOutOfRangeException(s);
    }
 
    private String reduce(String s) {

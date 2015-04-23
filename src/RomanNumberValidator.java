@@ -19,4 +19,10 @@ public class RomanNumberValidator {
          throw new NumberFormatException("Invalid Roman number: '" + s + "'");
       return m;
    }
+
+   public void validate(String s) {
+      // Valid range is I..MMMMDCCCCLXXXXVIIII
+      if (s.matches("M{5}.*"))
+         throw new NumberOutOfRangeException(s);
+   }
 }
