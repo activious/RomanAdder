@@ -2,21 +2,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RomanAdder {
-   private static Pattern p;
+   private RomanNumberValidator validator;
 
    public RomanAdder() {
-      if (p == null) {
-         StringBuilder sb = new StringBuilder("(?!$)");
-         for (RomanNumeral numeral : RomanNumeral.values())
-            sb.append("(" + numeral + "*)");
-         p = Pattern.compile(sb.toString());
-      }
+      validator = new RomanNumberValidator();
    }
 
    public String add(String a, String b) {
-      Matcher mA = p.matcher(a), mB = p.matcher(b);
-      validate(mA, a);
-      validate(mB, b);
+      Matcher mA = validator.match(a), mB = validator.match(b);
+
+      validate(a);
+      validate(b);
 
       StringBuilder sb = new StringBuilder();
       for (int i = 1; i <= RomanNumeral.values().length; i++) {
@@ -31,12 +27,6 @@ public class RomanAdder {
       } catch (NumberOutOfRangeException e) {
          throw new ResultOutOfRangeException();
       }
-   }
-
-   private void validate(Matcher m, String s) {
-      if (!m.matches())
-         throw new NumberFormatException("Invalid Roman number: '" + s + "'");
-      validate(s);
    }
 
    private void validate(String s) {
