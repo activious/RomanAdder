@@ -7,13 +7,12 @@ public class RomanAdder {
    public RomanAdder() {
       validator = new RomanNumberValidator();
       normalizer = new RomanNumberNormalizer(validator);
+      validator.setNormalizer(normalizer);
    }
 
    public String add(String a, String b) {
-      Matcher mA = validator.match(a), mB = validator.match(b);
-      // Make sure operands normalize without issues
-      normalizer.reduce(a);
-      normalizer.reduce(b);
+      Matcher mA = validator.match(a);
+      Matcher mB = validator.match(b);
 
       StringBuilder sb = new StringBuilder();
       for (int i = 1; i <= RomanNumeral.values().length; i++) {

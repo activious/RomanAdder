@@ -4,7 +4,15 @@ import java.util.regex.Pattern;
 public class RomanNumberValidator implements Validator<String> {
    private static Pattern p;
 
+   private RomanNumberNormalizer normalizer;
+
    public RomanNumberValidator() {
+      this(null);
+   }
+
+   public RomanNumberValidator(RomanNumberNormalizer normalizer) {
+      this.normalizer = normalizer;
+
       if (p == null) {
          StringBuilder sb = new StringBuilder("(?!$)");
          for (RomanNumeral numeral : RomanNumeral.values()) {
@@ -16,10 +24,27 @@ public class RomanNumberValidator implements Validator<String> {
       }
    }
 
+   public RomanNumberNormalizer getNormalizer() {
+      return normalizer;
+   }
+
+   public void setNormalizer(RomanNumberNormalizer normalizer) {
+      this.normalizer = normalizer;
+   }
+
    public Matcher match(String s) {
+      String orig = s;
+      if (normalizer != null)
+         s = normalizer.normalize(s);
+
       Matcher m = p.matcher(s);
       if (!m.matches())
-         throw new NumberFormatException("Invalid Roman number: '" + s + "'");
+         throw new NumberFormatException("Invalid Roman number: '" + orig + "'");
+
+      if (normalizer != null)
+         s = normalizer.reduce(s);
+
+      validate(s);
       return m;
    }
 
