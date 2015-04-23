@@ -2,12 +2,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RomanAdder {
-   private static final String[] NUMERALS = { "M", "D", "C", "L", "X", "V", "I" };
    private static Pattern p;
 
    public RomanAdder() {
-      if (p == null)
-         p = Pattern.compile("(?!$)(" + String.join("*)(", NUMERALS) + "*)");
+      if (p == null) {
+         StringBuilder sb = new StringBuilder("(?!$)");
+         for (RomanNumeral numeral : RomanNumeral.values())
+            sb.append("(" + numeral + "*)");
+         p = Pattern.compile(sb.toString());
+      }
    }
 
    public String add(String a, String b) {
@@ -16,7 +19,7 @@ public class RomanAdder {
       validate(mB, b);
 
       StringBuilder sb = new StringBuilder();
-      for (int i = 1; i <= NUMERALS.length; i++) {
+      for (int i = 1; i <= RomanNumeral.values().length; i++) {
          sb.append(mA.group(i));
          sb.append(mB.group(i));
       }
@@ -42,10 +45,11 @@ public class RomanAdder {
    }
 
    private String reduce(String s) {
-      for (int i = NUMERALS.length - 1; i > 0; i--) {
+      RomanNumeral[] numerals = RomanNumeral.values();
+      for (int i = numerals.length - 1; i > 0; i--) {
          s = s.replaceAll(
-                 NUMERALS[i] + "{" + (i % 2 == 0 ? 5 : 2) + "}",
-                 NUMERALS[i - 1]);
+                 numerals[i] + "{" + (i % 2 == 0 ? 5 : 2) + "}",
+                 numerals[i - 1].toString());
       }
       return s;
    }
