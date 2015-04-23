@@ -3,9 +3,11 @@ import java.util.regex.Pattern;
 
 public class RomanAdder {
    private RomanNumberValidator validator;
+   private RomanNumberNormalizer normalizer;
 
    public RomanAdder() {
       validator = new RomanNumberValidator();
+      normalizer = new RomanNumberNormalizer();
    }
 
    public String add(String a, String b) {
@@ -21,21 +23,11 @@ public class RomanAdder {
       }
 
       try {
-         String res = reduce(sb.toString());
+         String res = normalizer.normalize(sb.toString());
          validator.validate(res);
          return res;
       } catch (NumberOutOfRangeException e) {
          throw new ResultOutOfRangeException();
       }
-   }
-
-   private String reduce(String s) {
-      RomanNumeral[] numerals = RomanNumeral.values();
-      for (int i = numerals.length - 1; i > 0; i--) {
-         s = s.replaceAll(
-                 numerals[i] + "{" + (i % 2 == 0 ? 5 : 2) + "}",
-                 numerals[i - 1].toString());
-      }
-      return s;
    }
 }
