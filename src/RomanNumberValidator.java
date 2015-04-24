@@ -1,7 +1,7 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RomanNumberValidator implements Validator<String> {
+public class RomanNumberValidator {
    private static Pattern p;
 
    private RomanNumberNormalizer normalizer;
@@ -48,7 +48,6 @@ public class RomanNumberValidator implements Validator<String> {
       return m;
    }
 
-   @Override
    public void validate(String s) {
       // Valid range is I..MMMMDCCCCLXXXXVIIII
       if (s.matches("M{5}.*"))
