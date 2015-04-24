@@ -6,7 +6,7 @@ public class RomanAdder {
 
    public RomanAdder() {
       validator = new RomanNumberValidator();
-      normalizer = new RomanNumberNormalizer(validator);
+      normalizer = new RomanNumberNormalizer();
       validator.setNormalizer(normalizer);
    }
 
@@ -21,7 +21,9 @@ public class RomanAdder {
       }
 
       try {
-         return normalizer.reduce(sb.toString());
+         String res = normalizer.reduce(sb.toString());
+         validator.validate(res);
+         return res;
       } catch (NumberOutOfRangeException e) {
          throw new ResultOutOfRangeException();
       }

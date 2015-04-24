@@ -1,10 +1,4 @@
 public class RomanNumberNormalizer implements Normalizer<String> {
-   private Validator<String> validator;
-
-   public RomanNumberNormalizer(Validator<String> validator) {
-      this.validator = validator;
-   }
-
    @Override
    public String normalize(String s) {
       // Clear whitespace and convert to upper case
@@ -18,7 +12,6 @@ public class RomanNumberNormalizer implements Normalizer<String> {
                  numerals[i] + "{" + (i % 2 == 0 ? 5 : 2) + "}",
                  numerals[i - 1].toString());
       }
-      validator.validate(s);
       return s;
    }
 }
