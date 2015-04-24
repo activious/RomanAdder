@@ -1,13 +1,12 @@
 import java.util.regex.Matcher;
 
 public class RomanAdder {
-   private RomanNumberValidator validator;
    private RomanNumberNormalizer normalizer;
+   private RomanNumberValidator validator;
 
    public RomanAdder() {
-      validator = new RomanNumberValidator();
       normalizer = new RomanNumberNormalizer();
-      validator.setNormalizer(normalizer);
+      validator = new RomanNumberValidator(normalizer);
    }
 
    public String add(String a, String b) {
