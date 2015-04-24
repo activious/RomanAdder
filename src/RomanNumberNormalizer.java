@@ -1,5 +1,4 @@
-public class RomanNumberNormalizer implements Normalizer<String> {
-   @Override
+public class RomanNumberNormalizer {
    public String normalize(String s) {
       // Clear whitespace and convert to upper case
       return s.replaceAll("\\s+", "").toUpperCase();
