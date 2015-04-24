@@ -36,15 +36,13 @@ public class RomanNumberValidator {
       if (!m.matches())
          throw new NumberFormatException("Invalid Roman number: '" + orig + "'");
 
-      s = normalizer.reduce(s);
-
       validate(s);
       return m;
    }
 
    public void validate(String s) {
       // Valid range is I..MMMMDCCCCLXXXXVIIII
-      if (s.matches("M{5}.*"))
+      if (normalizer.reduce(s).matches("M{5}.*"))
          throw new NumberOutOfRangeException(s);
    }
 }
