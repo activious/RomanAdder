@@ -147,4 +147,10 @@ public class RomanAdderTest {
       String res = adder.add("MCCXVII", "DCCCCLXI");
       assertEquals("MMCLXXVIII", res);
    }
+
+   @Test
+   public void testLowerCaseAllowed() {
+      String res = adder.add("i", "i");
+      assertEquals("II", res);
+   }
 }
