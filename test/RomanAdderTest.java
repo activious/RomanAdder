@@ -153,4 +153,10 @@ public class RomanAdderTest {
       String res = adder.add("i", "i");
       assertEquals("II", res);
    }
+
+   @Test
+   public void testWhitespaceAllowed() {
+      String res = adder.add("III I", "  I ");
+      assertEquals("V", res);
+   }
 }
