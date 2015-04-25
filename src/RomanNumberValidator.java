@@ -9,15 +9,18 @@ public class RomanNumberValidator {
    public RomanNumberValidator(RomanNumberNormalizer normalizer) {
       this.normalizer = normalizer;
 
-      if (p == null) {
-         StringBuilder sb = new StringBuilder("(?!$)");
-         for (RomanNumeral numeral : RomanNumeral.values()) {
-            sb.append("(");
-            sb.append(numeral);
-            sb.append("*)");
-         }
-         p = Pattern.compile(sb.toString());
+      if (p == null)
+         p = compilePattern();
+   }
+
+   private static Pattern compilePattern() {
+      StringBuilder sb = new StringBuilder("(?!$)");
+      for (RomanNumeral numeral : RomanNumeral.values()) {
+         sb.append("(");
+         sb.append(numeral);
+         sb.append("*)");
       }
+      return Pattern.compile(sb.toString());
    }
 
    public RomanNumberNormalizer getNormalizer() {
